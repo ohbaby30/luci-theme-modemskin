@@ -6,17 +6,16 @@ SRC="$BASE/luci-theme-modemskin"
 OUT=${1:?Usage: build-apk.sh OUTPUT_DIRECTORY}
 ASSETS=${2:?Pass the prepared asset directory}
 VERSION=$(sed -n 's/^PKG_VERSION:=//p' "$SRC/Makefile")
-RELEASE=$(sed -n 's/^PKG_RELEASE:=//p' "$SRC/Makefile")
-case "$VERSION-r$RELEASE" in *[!0-9a-zA-Z._+-]*) echo 'Invalid package version' >&2; exit 1;; esac
+printf '%s\n' "$VERSION" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$' || { echo 'Expected a three-part package version' >&2; exit 1; }
 mkdir -p "$OUT"
 OUT=$(CDPATH= cd -- "$OUT" && pwd)
 STAGE=$(mktemp -d)
 trap 'rm -rf "$STAGE"' EXIT HUP INT TERM
 sh "$BASE/scripts/stage-theme.sh" "$ASSETS" "$STAGE"
-PACKAGE="$OUT/luci-theme-modemskin-$VERSION-r$RELEASE.apk"
+PACKAGE="$OUT/luci-theme-modemskin-$VERSION.apk"
 SOURCE_DATE_EPOCH=0 apk mkpkg --compat 3.0.0 \
   --info 'name:luci-theme-modemskin' \
-  --info "version:$VERSION-r$RELEASE" \
+  --info "version:$VERSION" \
   --info 'arch:noarch' --info 'license:MIT' \
   --info 'description:ModemSkin - three switchable gateway layouts' \
   --info 'depends:luci-base' \

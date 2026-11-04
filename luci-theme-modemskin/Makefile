@@ -10,8 +10,8 @@ LUCI_DESCRIPTION:=Three switchable carrier-style LuCI layouts with shared naviga
 LUCI_PKGARCH:=all
 LUCI_DEPENDS:=+luci-base
 
-PKG_VERSION:=1.1.0
-PKG_RELEASE:=4
+PKG_VERSION:=1.1.1
+PKG_RELEASE:=
 
 PKG_LICENSE:=MIT
 PKG_MAINTAINER:=Ohbaby

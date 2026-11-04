@@ -71,7 +71,9 @@ sh scripts/build-in-docker.sh "$PWD/../build/modemskin" both
 
 ## 发布版本
 
-更新 `luci-theme-modemskin/Makefile` 中的 `PKG_VERSION` 或 `PKG_RELEASE`，然后进入 **Actions → Build ModemSkin APK and IPK → Run workflow**。构建成功后自动创建对应版本的 Release，并上传 APK、IPK 和校验文件。同一版本不重复发布。
+版本使用 `主版本.次版本.修订版本`：修复问题递增最后一位，向后兼容的功能更新递增中间一位，不兼容的大改动递增第一位；递增前面的数字时，后面的数字归零。Release 标签使用 `v` 前缀，例如 `v1.1.1`。
+
+更新 `luci-theme-modemskin/Makefile` 中的 `PKG_VERSION`，然后进入 **Actions → Build ModemSkin APK and IPK → Run workflow**。构建成功后自动创建对应版本的 Release，并上传 APK、IPK 和校验文件。同一版本不重复发布。
 
 ## 来源与许可
 

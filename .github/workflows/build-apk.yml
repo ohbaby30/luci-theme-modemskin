@@ -21,13 +21,11 @@ jobs:
         id: version
         run: |
           version=$(sed -n 's/^PKG_VERSION:=//p' luci-theme-modemskin/Makefile)
-          revision=$(sed -n 's/^PKG_RELEASE:=//p' luci-theme-modemskin/Makefile)
           [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
-          [[ "$revision" =~ ^[0-9]+$ ]]
-          tag="v${version}-r${revision}"
+          tag="v${version}"
           existing=$(git ls-remote --tags origin "refs/tags/$tag" "refs/tags/$tag^{}")
           if [ -n "$existing" ]; then
-            echo "::error::Version $tag already exists. Increase PKG_VERSION or PKG_RELEASE before publishing."
+            echo "::error::Version $tag already exists. Increase PKG_VERSION before publishing."
             exit 1
           fi
           echo "tag=$tag" >> "$GITHUB_OUTPUT"

@@ -7,8 +7,7 @@ OUT=${1:?Usage: build-ipk.sh OUTPUT_DIRECTORY PREPARED_ASSETS IPKG_BUILD}
 ASSETS=${2:?Pass prepared assets}
 IPKG_BUILD=${3:?Pass verified OpenWrt ipkg-build}
 VERSION=$(sed -n 's/^PKG_VERSION:=//p' "$SRC/Makefile")
-RELEASE=$(sed -n 's/^PKG_RELEASE:=//p' "$SRC/Makefile")
-case "$VERSION-r$RELEASE" in *[!0-9a-zA-Z._+-]*) echo 'Invalid package version' >&2; exit 1;; esac
+printf '%s\n' "$VERSION" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$' || { echo 'Expected a three-part package version' >&2; exit 1; }
 mkdir -p "$OUT"
 OUT=$(CDPATH= cd -- "$OUT" && pwd)
 STAGE=$(mktemp -d)
@@ -17,7 +16,7 @@ sh "$BASE/scripts/stage-theme.sh" "$ASSETS" "$STAGE"
 mkdir "$STAGE/CONTROL"
 cat > "$STAGE/CONTROL/control" <<CONTROL
 Package: luci-theme-modemskin
-Version: $VERSION-r$RELEASE
+Version: $VERSION
 Depends: luci-base
 Source: ModemSkin
 Section: luci
@@ -42,4 +41,4 @@ chmod 755 "$STAGE/CONTROL/postinst" "$STAGE/CONTROL/prerm" "$STAGE/CONTROL/postr
 SOURCE_DATE_EPOCH=0 sh "$IPKG_BUILD" "$STAGE" "$OUT"
 cp "$STAGE/CONTROL/control" "$OUT/ipk-control.txt"
 cd "$OUT"
-sha256sum "luci-theme-modemskin_${VERSION}-r${RELEASE}_all.ipk" > IPK-SHA256SUMS
+sha256sum "luci-theme-modemskin_${VERSION}_all.ipk" > IPK-SHA256SUMS
