@@ -1,0 +1,26 @@
+{#
+ luci-theme-ctmodem-tricolor - footer
+ Licensed to the public under the MIT License.
+-#}
+{% if (!blank_page): %}
+		</div><!-- /#maincontent -->
+	</div><!-- /#gwbody -->
+
+	<footer id="gwfooter">
+		<ul id="modemenu"></ul>
+	</footer>
+
+	<div id="gwcopy">
+		{{ version.distname }} {{ version.distversion }} {{ version.distrevision }} / {{ version.luciname }} {{ version.luciversion }}
+	</div>
+
+</div><!-- /#page -->
+<dialog id="ct-shortcuts" aria-labelledby="ct-shortcuts-title">
+	<div class="ct-shortcut-head"><h2 id="ct-shortcuts-title">快捷入口</h2><button type="button" id="ct-shortcuts-close" aria-label="关闭快捷入口">×</button></div>
+	<nav aria-label="快捷导航"><ul id="ct-shortcut-links"></ul></nav>
+</dialog>
+<script src="{{ media }}/appearance.js?v=1.0.0-r5.20261104"></script>
+<script src="{{ media }}/menu-ctmodem.js?v=1.0.0-r5.20261104"></script>
+{% endif %}
+</body>
+</html>

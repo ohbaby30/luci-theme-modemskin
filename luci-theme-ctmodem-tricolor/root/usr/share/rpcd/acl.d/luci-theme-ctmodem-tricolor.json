@@ -1,0 +1,6 @@
+{
+  "luci-theme-ctmodem-tricolor": {
+    "description": "Save CTModem Tricolor appearance only",
+    "write": { "ubus": { "ctmodem.tricolor": [ "save" ] } }
+  }
+}

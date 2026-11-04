@@ -1,0 +1,9 @@
+{
+  "name": "ctmodem-tricolor-build-tools",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Build-time asset minifier; never installed on the router",
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  }
+}

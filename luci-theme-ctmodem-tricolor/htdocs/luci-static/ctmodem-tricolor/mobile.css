@@ -1,0 +1,114 @@
+/* Tricolor · China Mobile GS3101 teal configuration layout. MIT. */
+html[data-ct-skin="mobile"] { --ont-orange:#5cb6c9; --ont-orange-d:#378b9d; --ont-orange-l:#a1d7e1; --ont-blue:#333c43; --ont-blue-d:#273038; --ont-link:#267989; }
+html[data-ct-skin="mobile"] #page { box-shadow:none; background:#fafafa; }
+html[data-ct-skin="mobile"] #gwhead { background:#5cb6c9; height:68px; }
+html[data-ct-skin="mobile"] .ct-wordmark { display:block; position:absolute; left:27px; top:15px; color:#fff; line-height:1.2; }
+html[data-ct-skin="mobile"] .ct-brand-mobile { display:block; }
+html[data-ct-skin="mobile"] .ct-wordmark strong { font:700 22px Arial,"PingFang SC",sans-serif; padding-right:10px; }
+html[data-ct-skin="mobile"] .ct-wordmark small { color:#e7f8fa; font:12px Arial; }
+html[data-ct-skin="mobile"] #userbar { height:24px; color:white; padding:0 20px; font-size:11px; }
+html[data-ct-skin="mobile"] #userbar .prov { font-weight:normal; color:white; }
+html[data-ct-skin="mobile"] #userbar .prov-val { color:white; font-weight:normal; }
+html[data-ct-skin="mobile"] #userbar .userlinks { font-weight:normal; }
+html[data-ct-skin="mobile"] #userbar a { color:white; }
+html[data-ct-skin="mobile"] #gwmenu { display:block; height:auto; background:#333c43; }
+html[data-ct-skin="mobile"] #menuloc,html[data-ct-skin="mobile"] #gwline { display:none; }
+html[data-ct-skin="mobile"] #menuarea { display:block; }
+html[data-ct-skin="mobile"] #topmenu { height:112px; justify-content:center; gap:20px; background:#5cb6c9; padding:7px 20px 12px; overflow-x:auto; scrollbar-width:none; flex-wrap:nowrap; }
+html[data-ct-skin="mobile"] #topmenu > li { flex:0 0 100px; }
+html[data-ct-skin="mobile"] #topmenu > li > a { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; height:92px; line-height:20px; background:none; color:#fff; letter-spacing:2px; font-size:14px; font-weight:normal; }
+html[data-ct-skin="mobile"] #topmenu .ct-nav-icon { display:flex; align-items:center; justify-content:center; width:45px; height:45px; padding:4px; }
+html[data-ct-skin="mobile"] #topmenu .ct-nav-icon::before { width:35px; height:35px; }
+html[data-ct-skin="mobile"] #topmenu > li.active > a { color:#fff381; background:none; }
+html[data-ct-skin="mobile"] #topmenu > li.active .ct-nav-icon { color:#30404a; background:#fff174; border-radius:50%; }
+html[data-ct-skin="mobile"] #ont-tabbar { height:auto; min-height:32px; margin-left:170px; padding:3px 0; background:#333c43; }
+html[data-ct-skin="mobile"] #ont-tabbar > li+li::before { display:none; }
+html[data-ct-skin="mobile"] #ont-tabbar > li > a { color:#eee; line-height:26px; padding:0 11px; font-size:12px; }
+html[data-ct-skin="mobile"] #ont-tabbar > li.active > a { color:#fff18a; font-weight:normal; }
+html[data-ct-skin="mobile"] #gwbody { border:0; background:#fafafa; }
+html[data-ct-skin="mobile"] #leftcol { width:170px; flex:0 0 170px; background:#333c43; padding-top:10px; }
+html[data-ct-skin="mobile"] #lefttitle { background:none; color:#fff18a; text-align:left; font-weight:normal; height:auto; min-height:31px; padding:0 14px; white-space:normal; }
+html[data-ct-skin="mobile"] #leftmenu > li { padding:7px 14px; text-align:left; }
+html[data-ct-skin="mobile"] #leftmenu > li.active { background:#333c43; border-left:3px solid #f7ed81; padding-left:11px; }
+html[data-ct-skin="mobile"] #leftmenu > li > a { white-space:normal; color:#eee; }
+html[data-ct-skin="mobile"] #leftmenu > li.active > a { color:#fff18a; font-weight:normal; }
+html[data-ct-skin="mobile"] #leftmenu ul a { color:#ddd; }
+html[data-ct-skin="mobile"] #leftmenu a[aria-current="page"] { color:#fff18a; }
+html[data-ct-skin="mobile"] #maincontent { background:#fafafa; padding:18px 24px 28px; }
+html[data-ct-skin="mobile"] #maincontent h2,html[data-ct-skin="mobile"] #maincontent h3,html[data-ct-skin="mobile"] #maincontent legend { border:0; background:none; color:#333; font-size:13px; padding:6px 0; }
+html[data-ct-skin="mobile"] .cbi-value { border:0; padding:2px 0; }
+html[data-ct-skin="mobile"] .cbi-value-title { background:none; text-align:right; padding:8px 14px; }
+html[data-ct-skin="mobile"] .cbi-value-field { padding:5px 5px; }
+html[data-ct-skin="mobile"] .cbi-input-text,html[data-ct-skin="mobile"] .cbi-input-select { border-radius:3px; background:linear-gradient(#efefef,#fff); border-color:#ccc; }
+html[data-ct-skin="mobile"] .cbi-tabmenu { background:none; border-bottom:1px solid #ccc; }
+html[data-ct-skin="mobile"] .cbi-tabmenu li a { color:#555; background:none; }
+html[data-ct-skin="mobile"] .cbi-tabmenu li.cbi-tab a { color:#fff; background:#5cb6c9; border-top-color:#5cb6c9; }
+html[data-ct-skin="mobile"] .cbi-button-positive,html[data-ct-skin="mobile"] .cbi-button-save,html[data-ct-skin="mobile"] .cbi-button-apply { background:#5cb6c9; color:white; border-color:#5cb6c9; }
+html[data-ct-skin="mobile"] #gwfooter { background:#5cb6c9; height:16px; border:0; }
+html[data-ct-skin="mobile"] #gwfooter::before { display:none; }
+html[data-ct-skin="mobile"] #gwcopy { background:#fff; color:#888; font-size:11px; }
+html[data-ct-skin="mobile"] #loginbox { background:#fafafa; border:1px solid #5cb6c9; height:auto; min-height:300px; }
+html[data-ct-skin="mobile"] #loginbox .login-banner { background:#5cb6c9; height:auto; padding:20px 24px; color:white; font:700 25px Arial,"PingFang SC",sans-serif; }
+html[data-ct-skin="mobile"] .login-banner .ct-brand-mobile { display:block; }
+html[data-ct-skin="mobile"] .login-banner small { display:block; color:white; font:11px Arial; }
+html[data-ct-skin="mobile"] #loginbox .login-welcome { color:#444; padding:16px 0 23px; font-size:15px; }
+html[data-ct-skin="mobile"] #loginbox .login-row label { color:#333; }
+html[data-ct-skin="mobile"] #loginbox .login-btn { background:#5cb6c9; color:white; border-color:#5cb6c9; }
+html[data-ct-skin="mobile"] #loginbox .login-actions { margin-bottom:30px; }
+html[data-ct-skin="mobile"] #loginbox .login-error { position:static; color:#b11e1e; margin:8px; }
+@media(max-width:900px) {
+ html[data-ct-skin="mobile"] #gwhead { height:72px; }
+ html[data-ct-skin="mobile"] .ct-wordmark { left:14px; top:12px; }
+ html[data-ct-skin="mobile"] .ct-wordmark strong { font-size:20px; }
+ html[data-ct-skin="mobile"] .ct-wordmark small { font-size:10px; }
+ html[data-ct-skin="mobile"] #userbar { padding:0 14px; }
+ html[data-ct-skin="mobile"] #userbar .prov { display:block; }
+ html[data-ct-skin="mobile"] #userbar .userlinks { margin-left:auto; }
+ html[data-ct-skin="mobile"] #topmenu { height:100px; gap:0; padding:5px 6px 8px; justify-content:flex-start; }
+ html[data-ct-skin="mobile"] #topmenu > li { flex:1 0 80px; }
+ html[data-ct-skin="mobile"] #topmenu > li > a { height:85px; font-size:12px; }
+ html[data-ct-skin="mobile"] #topmenu .ct-nav-icon { width:39px; height:39px; }
+ html[data-ct-skin="mobile"] #topmenu .ct-nav-icon::before { width:31px; height:31px; }
+ html[data-ct-skin="mobile"] #ont-tabbar { margin-left:0; padding:3px 2px; flex-wrap:wrap; }
+ html[data-ct-skin="mobile"] #leftcol { width:100%; flex:0 0 auto; padding:3px 4px; }
+ html[data-ct-skin="mobile"] #leftmenu > li { padding:5px 9px; }
+ html[data-ct-skin="mobile"] #leftmenu > li.active { border-left:0; border-bottom:2px solid #f7ed81; padding-left:9px; }
+ html[data-ct-skin="mobile"] #lefttitle { padding:0 9px; }
+ html[data-ct-skin="mobile"] #maincontent { padding:14px 10px; }
+ html[data-ct-skin="mobile"] .cbi-value-title { text-align:left; padding:4px 7px; }
+ html[data-ct-skin="mobile"] .cbi-value-field { padding:5px 7px; }
+}
+
+/* Carrier gateway login panel, drawn locally; no remote images or dummy actions. */
+html[data-ct-skin="mobile"] #loginwrap { max-width:900px; padding:40px 16px 35px; }
+html[data-ct-skin="mobile"] #loginbox { width:590px; min-height:530px; box-sizing:border-box; border:0; border-radius:8px; background:#2eb4c9; padding:0 32px 24px; overflow:visible; }
+html[data-ct-skin="mobile"] #loginbox .login-banner { display:flex; align-items:center; justify-content:center; gap:22px; padding:28px 0 0; background:none; color:#fff; height:auto; text-align:left; }
+html[data-ct-skin="mobile"] .login-banner .ct-brand-mobile { display:block; padding-left:46px; background:url(mobile-mark.svg) left center/36px 36px no-repeat; font:700 23px/1.2 Arial,"PingFang SC",sans-serif; white-space:nowrap; }
+html[data-ct-skin="mobile"] .login-banner small { display:block; color:#fff; font:11px/16px Arial,sans-serif; }
+html[data-ct-skin="mobile"] .ct-login-product { display:block; color:#fff; border-left:1px solid #a6e1ea; padding-left:20px; font:300 23px/1.4 Arial,"PingFang SC",sans-serif; white-space:nowrap; }
+html[data-ct-skin="mobile"] .ct-login-product small { font-size:9px; letter-spacing:.6px; }
+html[data-ct-skin="mobile"] #loginbox .ct-login-intro { display:block; margin:47px 0 30px; }
+html[data-ct-skin="mobile"] .ct-login-welcome { display:none; }
+html[data-ct-skin="mobile"] .ct-login-avatar { display:block; width:88px; height:88px; border:2px solid #d6f4f8; border-radius:50%; padding:17px; margin:0 auto; }
+html[data-ct-skin="mobile"] .ct-login-avatar::before { content:""; display:block; width:100%; height:100%; background:#fff; mask:url(login-user.svg) center/contain no-repeat; }
+html[data-ct-skin="mobile"] #loginbox .login-welcome { display:none; }
+html[data-ct-skin="mobile"] #loginform { width:380px; max-width:100%; margin:0 auto; }
+html[data-ct-skin="mobile"] #loginbox .login-row { margin-bottom:18px; }
+html[data-ct-skin="mobile"] #loginbox .login-row label { width:90px; flex-basis:90px; padding-right:14px; color:#fff; font:14px Arial,"PingFang SC",sans-serif; }
+html[data-ct-skin="mobile"] #loginbox .login-row input { width:230px; min-width:0; height:37px; background:#fff; color:#333; border:1px solid #d4e9ed; border-radius:3px; font:15px Arial,sans-serif; padding:0 10px; }
+html[data-ct-skin="mobile"] #loginbox .login-row input:focus { border-color:#236979; outline:2px solid #d3f2f8; outline-offset:1px; }
+html[data-ct-skin="mobile"] #loginbox .login-actions { margin:31px 0 0; }
+html[data-ct-skin="mobile"] #loginbox .login-btn { width:175px; height:37px; color:#fff; background:transparent; border:1px solid #dcf3f7; border-radius:4px; font:15px Arial,"PingFang SC",sans-serif; letter-spacing:2px; }
+html[data-ct-skin="mobile"] #loginbox .login-btn:hover { background:#ffffff20; }
+html[data-ct-skin="mobile"] #loginbox .login-error { position:static; margin:10px 0; padding:6px; color:#fff; background:#894327; font:12px/18px Arial,sans-serif; }
+html[data-ct-skin="mobile"] .ct-login-hint { display:block; margin:25px 0 0; text-align:center; color:#e4f8fa; font:12px/1.5 Arial,"PingFang SC",sans-serif; }
+@media(max-width:520px) {
+ html[data-ct-skin="mobile"] #loginwrap { padding:20px 12px; }
+ html[data-ct-skin="mobile"] #loginbox { padding:0 14px 25px; min-height:505px; }
+ html[data-ct-skin="mobile"] #loginbox .login-banner { gap:13px; padding-top:25px; }
+ html[data-ct-skin="mobile"] .login-banner .ct-brand-mobile { font-size:18px; padding-left:33px; background-size:27px; }
+ html[data-ct-skin="mobile"] .ct-login-product { font-size:18px; padding-left:12px; }
+ html[data-ct-skin="mobile"] .ct-login-product small { font-size:7px; letter-spacing:0; }
+ html[data-ct-skin="mobile"] #loginbox .login-row label { width:75px; flex-basis:75px; font-size:13px; padding-right:8px; }
+ html[data-ct-skin="mobile"] #loginbox .login-row input { flex:1 1 auto; max-width:230px; }
+}

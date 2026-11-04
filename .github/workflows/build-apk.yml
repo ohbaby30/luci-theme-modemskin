@@ -1,0 +1,33 @@
+name: Build ModemSkin APK and IPK
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up build-only Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build APK and IPK from one payload
+        run: sh scripts/build-in-docker.sh "$RUNNER_TEMP/modemskin-packages" both
+      - name: Store APK, IPK and checksums
+        uses: actions/upload-artifact@v4
+        with:
+          name: modemskin-apk-ipk
+          path: |
+            ${{ runner.temp }}/modemskin-packages/*.apk
+            ${{ runner.temp }}/modemskin-packages/*.ipk
+            ${{ runner.temp }}/modemskin-packages/SHA256SUMS
+            ${{ runner.temp }}/modemskin-packages/package-metadata.txt
+            ${{ runner.temp }}/modemskin-packages/ipk-control.txt
+          if-no-files-found: error
+          retention-days: 30

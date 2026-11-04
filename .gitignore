@@ -1,0 +1,12 @@
+# Build output and local tooling belong outside this repository.
+*.apk
+*.tar.gz
+node_modules/
+__pycache__/
+.DS_Store
+
+# Package and local verification outputs
+*.ipk
+*.log
+.env
+.env.*

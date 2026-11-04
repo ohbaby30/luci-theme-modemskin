@@ -1,0 +1,116 @@
+{#
+ luci-theme-ctmodem-tricolor - 光猫/网关风格主题 header
+ 参照天翼网关 Web 管理界面版式
+ Licensed to the public under the MIT License.
+-#}
+{%
+	import { getuid, getspnam } from 'luci.core';
+	import { cursor } from 'uci';
+	const ctConfig = cursor();
+	const ctLoaded = ctConfig.load('/etc/config/ctmodem_tricolor');
+	const ctValue = ctLoaded ? ctConfig.get('ctmodem_tricolor', 'main', 'skin') : null;
+	const ctSkin = (ctValue == 'telecom' || ctValue == 'unicom' || ctValue == 'mobile') ? ctValue : 'telecom';
+
+	const board = ubus.call('system', 'board') ?? {};
+	const hostname = board.hostname ?? 'OpenWrt';
+	const devname = hostname;
+	const modelname = board.model ?? '—';
+
+	http.prepare_content('text/html; charset=UTF-8');
+-%}
+<!DOCTYPE html>
+<html lang="{{ dispatcher.lang }}" data-ct-skin="{{ ctSkin }}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="darkreader-lock">
+	<title>{{ entityencode(hostname, true) }}{% if (dispatched?.title): %} | {{ entityencode(_(dispatched.title), true) }}{% endif %}</title>
+	<link rel="stylesheet" href="{{ media }}/cascade.css?v=1.0.0-r5.20261104">
+	<link id="ct-skin-style" rel="stylesheet" href="{{ media }}/{{ ctSkin }}.css?v=1.0.0-r5.20261104">
+	<link rel="icon" href="{{ media }}/logo.svg" sizes="any">
+	{% if (node?.css): %}
+	<link rel="stylesheet" href="{{ resource }}/{{ node.css }}">
+	{% endif %}
+	{% if (css): %}
+	<style title="text/css">{{ css }}</style>
+	{% endif %}
+	<script src="{{ dispatcher.build_url('admin/translations', dispatcher.lang) }}"></script>
+	<script src="{{ resource }}/cbi.js?v={{ pkgs_update_time }}"></script>
+</head>
+
+<body class="lang_{{ dispatcher.lang }} {{ entityencode(striptags(node?.title ?? ''), true) }}" data-page="{{ entityencode(join('-', length(ctx.request_path) ? ctx.request_path : ctx.path), true) }}">
+{% if (!blank_page): %}
+<div id="page">
+	<aside id="ct-appearance" aria-label="外观设置">
+		<label for="ct-skin-select">外观</label>
+		<select id="ct-skin-select" disabled>
+			<option value="telecom"{% if (ctSkin == 'telecom'): %} selected{% endif %}>中国电信</option>
+			<option value="unicom"{% if (ctSkin == 'unicom'): %} selected{% endif %}>中国联通</option>
+			<option value="mobile"{% if (ctSkin == 'mobile'): %} selected{% endif %}>中国移动</option>
+		</select>
+		<button type="button" id="ct-skin-save" disabled>保存外观</button>
+		<button type="button" id="ct-skin-revert" disabled>撤销预览</button>
+		<button type="button" id="ct-shortcuts-open" disabled>快捷入口</button>
+		<span id="ct-skin-status" role="status" aria-live="polite"></span>
+	</aside>
+
+	<header id="gwhead">
+		<div class="ct-wordmark" aria-label="运营商风格">
+			<span class="ct-brand-unicom"><strong>中国联通</strong><small>China unicom</small></span>
+			<span class="ct-brand-mobile"><strong>中国移动</strong><small>CHINA MOBILE · 智能家庭网关</small></span>
+		</div>
+		<div id="userbar">
+			<div class="prov">OpenWrt 网关管理 · <em class="prov-val">{{ entityencode(hostname, true) }}</em></div>
+			<div id="indicators" aria-live="polite"></div>
+			<div class="userlinks">
+				欢迎您！&nbsp;&nbsp;
+				<a href="{{ dispatcher.build_url('admin/logout') }}">{{ _('Logout') }}</a>
+			</div>
+		</div>
+	</header>
+
+	<div id="gwmenu">
+		<div id="menuloc">{{ _('Status') }}</div>
+		<div id="menuarea">
+			<div id="gwline">
+				<span class="gwname">{{ _('Device') }}：{{ entityencode(devname, true) }}</span>
+				<span class="gwmodel">{{ _('Model') }}：{{ entityencode(modelname, true) }}</span>
+			</div>
+			<ul id="topmenu" aria-label="主导航"></ul>
+			<ul id="ont-tabbar" aria-label="栏目导航"></ul>
+		</div>
+	</div>
+
+	<div id="gwbody">
+		<div id="leftcol">
+			<div id="lefttitle"></div>
+			<ul id="leftmenu"></ul>
+		</div>
+
+		<div id="maincontent" class="container">
+		<div id="tabmenu"></div>
+
+			{% if (getuid() == 0 && getspnam('root')?.pwdp === ''): %}
+			<div class="alert-message warning">
+				<h4>{{ _('No password set!') }}</h4>
+				<p>{{ _('There is no password set on this router. Please configure a root password to protect the web interface.') }}</p>
+				{% if (dispatcher.lookup('admin/system/admin')): %}
+				<div class="right"><a class="btn" href="{{ dispatcher.build_url('admin/system/admin') }}">{{ _('Go to password configuration...') }}</a></div>
+				{% endif %}
+			</div>
+			{% endif %}
+
+			{% if (board.rootfs_type == 'initramfs'): %}
+			<div class="alert-message warning">
+				<h4>{{ _('System running in recovery (initramfs) mode.') }}</h4>
+				<p>{{ _('No changes to settings will be stored and are lost after rebooting.') }}</p>
+			</div>
+			{% endif %}
+
+			<noscript>
+				<div class="alert-message warning">
+					<h4>{{ _('JavaScript required!') }}</h4>
+					<p>{{ _('You must enable JavaScript in your browser or LuCI will not work properly.') }}</p>
+				</div>
+			</noscript>
+{% endif %}
