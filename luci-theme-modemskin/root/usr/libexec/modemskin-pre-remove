@@ -1,0 +1,36 @@
+#!/bin/sh
+set -eu
+[ -z "${IPKG_INSTROOT:-}" ] || exit 0
+[ "${IPKG_NO_SCRIPT:-0}" != 1 ] || exit 0
+[ "${1:-}" != upgrade ] || exit 0
+command -v uci >/dev/null 2>&1 || exit 0
+[ -f /etc/config/luci ] || exit 0
+valid_theme() {
+  case "$1" in ''|modemskin|*[!a-zA-Z0-9_-]*) return 1;; esac
+  [ -f "/www/luci-static/$1/cascade.css" ] || return 1
+  [ -f "/usr/share/ucode/luci/template/themes/$1/header.ut" ] ||
+    [ -f "/usr/lib/lua/luci/view/themes/$1/header.htm" ]
+}
+current=$(uci -q get luci.main.mediaurlbase || true)
+if [ "$current" = '/luci-static/modemskin' ]; then
+  fallback=''
+  # Preserve the existing preference, then consider other complete themes.
+  for theme in ctmodem-tricolor ctmodem-ohbaby bootstrap; do
+    if valid_theme "$theme"; then fallback=$theme; break; fi
+  done
+  if [ -z "$fallback" ]; then
+    for header in /usr/share/ucode/luci/template/themes/*/header.ut /usr/lib/lua/luci/view/themes/*/header.htm; do
+      [ -f "$header" ] || continue
+      theme=${header%/*}
+      theme=${theme##*/}
+      if valid_theme "$theme"; then fallback=$theme; break; fi
+    done
+  fi
+  if [ -z "$fallback" ]; then
+    echo 'Select another installed LuCI theme before removing ModemSkin.' >&2
+    exit 1
+  fi
+  uci -q set "luci.main.mediaurlbase=/luci-static/$fallback"
+fi
+uci -q delete luci.themes.ModemSkin || true
+uci -q commit luci

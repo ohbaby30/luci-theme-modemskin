@@ -19,8 +19,8 @@
 	<div class="ct-shortcut-head"><h2 id="ct-shortcuts-title">快捷入口</h2><button type="button" id="ct-shortcuts-close" aria-label="关闭快捷入口">×</button></div>
 	<nav aria-label="快捷导航"><ul id="ct-shortcut-links"></ul></nav>
 </dialog>
-<script src="{{ media }}/appearance.js?v=1.1.0-r1.20261104"></script>
-<script src="{{ media }}/menu-modemskin.js?v=1.1.0-r1.20261104"></script>
+<script src="{{ media }}/appearance.js?v={{ pkgs_update_time }}"></script>
+<script src="{{ media }}/menu-modemskin.js?v={{ pkgs_update_time }}"></script>
 {% endif %}
 </body>
 </html>

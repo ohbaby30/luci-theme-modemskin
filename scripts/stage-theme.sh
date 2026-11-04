@@ -17,8 +17,8 @@ cp "$SRC/root/etc/uci-defaults/30_luci-theme-modemskin" "$STAGE/etc/uci-defaults
 cp "$SRC/root/etc/config/modemskin" "$STAGE/etc/config/"
 cp "$SRC/root/usr/share/rpcd/acl.d/luci-theme-modemskin.json" "$STAGE/usr/share/rpcd/acl.d/"
 cp "$SRC/root/usr/share/rpcd/ucode/modemskin.uc" "$STAGE/usr/share/rpcd/ucode/"
-cp "$SRC/root/usr/libexec/modemskin-setup.uc" "$STAGE/usr/libexec/"
+cp "$SRC/root/usr/libexec/modemskin-setup.uc" "$SRC/root/usr/libexec/modemskin-pre-remove" "$STAGE/usr/libexec/"
 cp "$BASE/LICENSE" "$BASE/NOTICE.md" "$BASE/THIRD_PARTY_LICENSES.md" "$STAGE/usr/share/doc/luci-theme-modemskin/"
 find "$STAGE" -type d -exec chmod 755 {} \;
 find "$STAGE" -type f -exec chmod 644 {} \;
-chmod 755 "$STAGE/etc/uci-defaults/30_luci-theme-modemskin"
+chmod 755 "$STAGE/etc/uci-defaults/30_luci-theme-modemskin" "$STAGE/usr/libexec/modemskin-pre-remove"

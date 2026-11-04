@@ -1523,7 +1523,7 @@ body.modal-overlay-active { overflow: hidden; }
 #ct-shortcut-links a:hover { color:#b11545; text-decoration:none; }
 #ct-shortcut-links .ct-nav-icon { display:flex; width:68px; height:68px; border-radius:50%; align-items:center; justify-content:center; background:#999; color:white; }
 #ct-shortcut-links a:hover .ct-nav-icon { background:#b11545; }
-.ct-nav-icon::before { content:""; display:block; width:34px; height:34px; background:currentColor; mask:var(--ct-icon) center/contain no-repeat; }
+.ct-nav-icon::before { content:""; display:block; width:34px; height:34px; background:currentColor; -webkit-mask:var(--ct-icon) center/contain no-repeat; mask:var(--ct-icon) center/contain no-repeat; }
 @media(max-width:520px) {
  #ct-appearance { gap:5px; padding:5px 6px; justify-content:flex-start; }
  #ct-appearance select,#ct-appearance button { font-size:11px; padding-inline:5px; }

@@ -24,8 +24,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="darkreader-lock">
 	<title>{{ entityencode(hostname, true) }}{% if (dispatched?.title): %} | {{ entityencode(_(dispatched.title), true) }}{% endif %}</title>
-	<link rel="stylesheet" href="{{ media }}/cascade.css?v=1.1.0-r1.20261104">
-	<link id="ct-skin-style" rel="stylesheet" href="{{ media }}/{{ ctSkin }}.css?v=1.1.0-r1.20261104">
+	<link rel="stylesheet" href="{{ media }}/cascade.css?v={{ pkgs_update_time }}">
+	<link id="ct-skin-style" rel="stylesheet" href="{{ media }}/{{ ctSkin }}.css?v={{ pkgs_update_time }}">
 	<link rel="icon" href="{{ media }}/logo.svg" sizes="any">
 	{% if (node?.css): %}
 	<link rel="stylesheet" href="{{ resource }}/{{ node.css }}">
