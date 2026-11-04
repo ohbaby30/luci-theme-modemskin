@@ -9,7 +9,7 @@
 - 按 LuCI 菜单与权限生成导航，兼容现代 JS 页面和 Lua/CBI 兼容页面。
 - 适配常见表单、日志、下拉框及桌面和手机布局。
 - 共用基础样式，按需加载外观资源；不新增常驻服务。
-- 一次 GitHub Actions 构建生成 APK、IPK 和 SHA256 校验文件，并发布到 Releases。
+- 提供 APK、IPK 安装包及 SHA256 校验文件。
 
 ## 适用环境
 
@@ -56,24 +56,6 @@ apk del luci-theme-modemskin
 # IPK 固件
 opkg remove luci-theme-modemskin
 ```
-
-## 本地构建
-
-构建电脑需要 Docker、Node.js 22 和 curl；路由器运行主题不需要这些工具。
-
-在仓库根目录执行，构建产物保存在源码目录之外：
-
-```sh
-sh scripts/build-in-docker.sh "$PWD/../build/modemskin" both
-```
-
-第二参数可选 `apk`、`ipk`、`both`；省略时仅构建 APK。
-
-## 发布版本
-
-版本使用 `主版本.次版本.修订版本`：修复问题递增最后一位，向后兼容的功能更新递增中间一位，不兼容的大改动递增第一位；递增前面的数字时，后面的数字归零。Release 标签使用 `v` 前缀，例如 `v1.1.1`。
-
-更新 `luci-theme-modemskin/Makefile` 中的 `PKG_VERSION`，然后进入 **Actions → Build ModemSkin APK and IPK → Run workflow**。构建成功后自动创建对应版本的 Release，并上传 APK、IPK 和校验文件。同一版本不重复发布。
 
 ## 来源与许可
 
