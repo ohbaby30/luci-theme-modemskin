@@ -1,5 +1,5 @@
 /*!
- * CTModem Tricolor navigation, based on hakureiyuyuko/luci-theme-ctmodem.
+ * ModemSkin navigation, based on hakureiyuyuko/luci-theme-ctmodem.
  * Licensed under the MIT License. See LICENSE.
  */
 'use strict';
@@ -156,7 +156,7 @@
 				render(ui, tree);
 			});
 		}).catch(function (e) {
-			console.error('ctmodem-tricolor: menu failed', e);
+			console.error('modemskin: menu failed', e);
 			var left = document.getElementById('leftmenu');
 			if (left) {
 				left.style.display = '';

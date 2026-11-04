@@ -1,10 +1,10 @@
-// CTModem Tricolor: fixed-purpose appearance save; no general UCI commit API.
+// ModemSkin: fixed-purpose appearance save; no general UCI commit API.
 // MIT License.
 'use strict';
 import { cursor } from 'uci';
 
 return {
-    'ctmodem.tricolor': {
+    'modemskin': {
         save: {
             args: { skin: '' },
             call: function(request) {
@@ -15,11 +15,11 @@ return {
                 // Absolute-path loading deliberately bypasses UCI delta overlays.
                 // Only the committed file is read and updated, not CLI/session edits.
                 const uc = cursor();
-                if (!uc.load('/etc/config/ctmodem_tricolor'))
+                if (!uc.load('/etc/config/modemskin'))
                     return { ok: false, error: 'config_unavailable' };
-                if (!uc.get('ctmodem_tricolor', 'main'))
-                    uc.set('ctmodem_tricolor', 'main', 'appearance');
-                if (!uc.set('ctmodem_tricolor', 'main', 'skin', skin) || !uc.commit('ctmodem_tricolor'))
+                if (!uc.get('modemskin', 'main'))
+                    uc.set('modemskin', 'main', 'appearance');
+                if (!uc.set('modemskin', 'main', 'skin', skin) || !uc.commit('modemskin'))
                     return { ok: false, error: 'commit_failed' };
                 return { ok: true, skin: skin };
             }

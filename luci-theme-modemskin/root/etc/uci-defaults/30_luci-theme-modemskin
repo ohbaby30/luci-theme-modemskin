@@ -1,0 +1,4 @@
+#!/bin/sh
+[ -z "${IPKG_INSTROOT:-}" ] || exit 0
+[ -f /etc/config/luci ] || exit 0
+ucode /usr/libexec/modemskin-setup.uc

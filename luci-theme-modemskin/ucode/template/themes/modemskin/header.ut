@@ -1,5 +1,5 @@
 {#
- luci-theme-ctmodem-tricolor - 光猫/网关风格主题 header
+ luci-theme-modemskin - 光猫/网关风格主题 header
  参照天翼网关 Web 管理界面版式
  Licensed to the public under the MIT License.
 -#}
@@ -7,8 +7,8 @@
 	import { getuid, getspnam } from 'luci.core';
 	import { cursor } from 'uci';
 	const ctConfig = cursor();
-	const ctLoaded = ctConfig.load('/etc/config/ctmodem_tricolor');
-	const ctValue = ctLoaded ? ctConfig.get('ctmodem_tricolor', 'main', 'skin') : null;
+	const ctLoaded = ctConfig.load('/etc/config/modemskin');
+	const ctValue = ctLoaded ? ctConfig.get('modemskin', 'main', 'skin') : null;
 	const ctSkin = (ctValue == 'telecom' || ctValue == 'unicom' || ctValue == 'mobile') ? ctValue : 'telecom';
 
 	const board = ubus.call('system', 'board') ?? {};
@@ -25,8 +25,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="darkreader-lock">
 	<title>{{ entityencode(hostname, true) }}{% if (dispatched?.title): %} | {{ entityencode(_(dispatched.title), true) }}{% endif %}</title>
-	<link rel="stylesheet" href="{{ media }}/cascade.css?v=1.0.0-r5.20261104">
-	<link id="ct-skin-style" rel="stylesheet" href="{{ media }}/{{ ctSkin }}.css?v=1.0.0-r5.20261104">
+	<link rel="stylesheet" href="{{ media }}/cascade.css?v=1.1.0-r1.20261104">
+	<link id="ct-skin-style" rel="stylesheet" href="{{ media }}/{{ ctSkin }}.css?v=1.1.0-r1.20261104">
 	<link rel="icon" href="{{ media }}/logo.svg" sizes="any">
 	{% if (node?.css): %}
 	<link rel="stylesheet" href="{{ resource }}/{{ node.css }}">

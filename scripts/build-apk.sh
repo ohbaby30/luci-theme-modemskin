@@ -2,7 +2,7 @@
 # Run with apk-tools v3 (the Docker wrapper supplies it).
 set -eu
 BASE=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
-SRC="$BASE/luci-theme-ctmodem-tricolor"
+SRC="$BASE/luci-theme-modemskin"
 OUT=${1:?Usage: build-apk.sh OUTPUT_DIRECTORY}
 ASSETS=${2:?Pass the prepared asset directory}
 VERSION=$(sed -n 's/^PKG_VERSION:=//p' "$SRC/Makefile")
@@ -13,12 +13,12 @@ OUT=$(CDPATH= cd -- "$OUT" && pwd)
 STAGE=$(mktemp -d)
 trap 'rm -rf "$STAGE"' EXIT HUP INT TERM
 sh "$BASE/scripts/stage-theme.sh" "$ASSETS" "$STAGE"
-PACKAGE="$OUT/luci-theme-ctmodem-tricolor-$VERSION-r$RELEASE.apk"
+PACKAGE="$OUT/luci-theme-modemskin-$VERSION-r$RELEASE.apk"
 SOURCE_DATE_EPOCH=0 apk mkpkg --compat 3.0.0 \
-  --info 'name:luci-theme-ctmodem-tricolor' \
+  --info 'name:luci-theme-modemskin' \
   --info "version:$VERSION-r$RELEASE" \
   --info 'arch:noarch' --info 'license:MIT' \
-  --info 'description:CTModem Tricolor - three switchable gateway layouts' \
+  --info 'description:ModemSkin - three switchable gateway layouts' \
   --info 'depends:luci-base' \
   --script "post-install:$BASE/scripts/post-install.sh" \
   --script "post-upgrade:$BASE/scripts/post-install.sh" \

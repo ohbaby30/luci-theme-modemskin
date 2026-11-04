@@ -1,5 +1,5 @@
 {
-  "name": "ctmodem-tricolor-build-tools",
+  "name": "modemskin-build-tools",
   "private": true,
   "version": "1.0.0",
   "description": "Build-time asset minifier; never installed on the router",

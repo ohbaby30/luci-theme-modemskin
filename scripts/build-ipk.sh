@@ -2,7 +2,7 @@
 # Run with GNU tar/coreutils, using the pinned official OpenWrt ipkg-build.
 set -eu
 BASE=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
-SRC="$BASE/luci-theme-ctmodem-tricolor"
+SRC="$BASE/luci-theme-modemskin"
 OUT=${1:?Usage: build-ipk.sh OUTPUT_DIRECTORY PREPARED_ASSETS IPKG_BUILD}
 ASSETS=${2:?Pass prepared assets}
 IPKG_BUILD=${3:?Pass verified OpenWrt ipkg-build}
@@ -16,7 +16,7 @@ trap 'rm -rf "$STAGE"' EXIT HUP INT TERM
 sh "$BASE/scripts/stage-theme.sh" "$ASSETS" "$STAGE"
 mkdir "$STAGE/CONTROL"
 cat > "$STAGE/CONTROL/control" <<CONTROL
-Package: luci-theme-ctmodem-tricolor
+Package: luci-theme-modemskin
 Version: $VERSION-r$RELEASE
 Depends: luci-base
 Source: ModemSkin
@@ -27,7 +27,7 @@ License: MIT
 Installed-Size: 0
 Description: ModemSkin - three switchable carrier-style LuCI layouts (ucode LuCI required)
 CONTROL
-printf '/etc/config/ctmodem_tricolor\n' > "$STAGE/CONTROL/conffiles"
+printf '/etc/config/modemskin\n' > "$STAGE/CONTROL/conffiles"
 cp "$BASE/scripts/post-install.sh" "$STAGE/CONTROL/postinst"
 # opkg invokes removal hooks during an upgrade too. Keep the selected theme then.
 {
@@ -42,4 +42,4 @@ chmod 755 "$STAGE/CONTROL/postinst" "$STAGE/CONTROL/prerm" "$STAGE/CONTROL/postr
 SOURCE_DATE_EPOCH=0 sh "$IPKG_BUILD" "$STAGE" "$OUT"
 cp "$STAGE/CONTROL/control" "$OUT/ipk-control.txt"
 cd "$OUT"
-sha256sum "luci-theme-ctmodem-tricolor_${VERSION}-r${RELEASE}_all.ipk" > IPK-SHA256SUMS
+sha256sum "luci-theme-modemskin_${VERSION}-r${RELEASE}_all.ipk" > IPK-SHA256SUMS

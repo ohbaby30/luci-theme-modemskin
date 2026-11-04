@@ -1,0 +1,6 @@
+{
+  "luci-theme-modemskin": {
+    "description": "Save ModemSkin appearance only",
+    "write": { "ubus": { "modemskin": [ "save" ] } }
+  }
+}

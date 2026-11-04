@@ -1,2 +1,3 @@
 config appearance 'main'
 	option skin 'telecom'
+	option migration_pending '1'

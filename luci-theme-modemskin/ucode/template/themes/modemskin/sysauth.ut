@@ -1,5 +1,5 @@
 {#
- luci-theme-ctmodem-tricolor - 登录页（光猫风格蓝色卡片）
+ luci-theme-modemskin - 登录页（光猫风格蓝色卡片）
  Licensed to the public under the MIT License.
 -#}
 {% include('header', { blank_page: true }) %}

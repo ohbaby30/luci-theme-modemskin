@@ -1,4 +1,4 @@
-/* CTModem Tricolor appearance control. MIT. */
+/* ModemSkin appearance control. MIT. */
 'use strict';
 (function () {
 	function boot() {
@@ -73,15 +73,15 @@
 				saved = current;
 				message('外观已保存');
 			}).catch(function (error) {
-				console.warn('ctmodem-tricolor: appearance save failed', error.message || 'RPC failed');
+				console.warn('modemskin: appearance save failed', error.message || 'RPC failed');
 				message('保存未确认，请重新登录或刷新检查；当前仍为预览。', true);
 			}).finally(function () { saving = false; update(); });
 		});
 		update();
 		L.require('rpc').then(function (api) {
-			rpc = api.declare({ object: 'ctmodem.tricolor', method: 'save', params: ['skin'], expect: { '': {} }, reject: true });
+			rpc = api.declare({ object: 'modemskin', method: 'save', params: ['skin'], expect: { '': {} }, reject: true });
 			var access = api.declare({ object: 'session', method: 'access', params: ['scope', 'object', 'function'], expect: { access: false }, reject: true });
-			return access('ubus', 'ctmodem.tricolor', 'save');
+			return access('ubus', 'modemskin', 'save');
 		}).then(function (access) {
 			permitted = access === true;
 			if (!permitted) message('可预览；当前账号无外观保存权限。');

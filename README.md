@@ -35,14 +35,14 @@ ModemSkin 基于 [hakureiyuyuko/luci-theme-ctmodem](https://github.com/hakureiyu
 
 ### 当前发行标识
 
-仓库名称为 ModemSkin。当前发行包与已测试安装保持以下技术标识：
+项目、软件包、主题选项和资源路径统一使用 ModemSkin 标识：
 
 | 项目 | 标识 |
 | --- | --- |
-| 软件包 | `luci-theme-ctmodem-tricolor` |
-| LuCI 主题选项 | `CTModem_Tricolor` |
-| 静态资源目录 | `/luci-static/ctmodem-tricolor` |
-| 外观配置 | `/etc/config/ctmodem_tricolor` |
+| 软件包 | `luci-theme-modemskin` |
+| LuCI 主题选项 | `ModemSkin` |
+| 静态资源目录 | `/luci-static/modemskin` |
+| 外观配置 | `/etc/config/modemskin` |
 
 ## 获取安装包
 
@@ -64,16 +64,16 @@ ModemSkin 基于 [hakureiyuyuko/luci-theme-ctmodem](https://github.com/hakureiyu
 ### APK 固件
 
 ```sh
-apk add --allow-untrusted /tmp/luci-theme-ctmodem-tricolor-1.0.0-r5.apk
+apk add --allow-untrusted /tmp/luci-theme-modemskin-1.1.0-r1.apk
 ```
 
 ### IPK 固件
 
 ```sh
-opkg install /tmp/luci-theme-ctmodem-tricolor_1.0.0-r5_all.ipk
+opkg install /tmp/luci-theme-modemskin_1.1.0-r1_all.ipk
 ```
 
-上述文件名对应当前版本；后续版本请替换为实际下载文件名。安装后进入 **系统 → 系统 → 语言和界面**（部分版本称“语言和样式”），选择 **CTModem_Tricolor**，保存并应用。
+上述文件名对应当前版本；后续版本请替换为实际下载文件名。安装后进入 **系统 → 系统 → 语言和界面**（部分版本称“语言和样式”），选择 **ModemSkin**，保存并应用。
 
 安装只注册主题，不自动切换当前主题，不修改网络、代理配置或登录密码。安装、更新及卸载会重新加载现有 rpcd 扩展，LuCI RPC 请求可能短暂受影响；不会重启网络、代理或路由器。
 
@@ -94,10 +94,10 @@ opkg install /tmp/luci-theme-ctmodem-tricolor_1.0.0-r5_all.ipk
 
 ```sh
 # APK 固件
-apk del luci-theme-ctmodem-tricolor
+apk del luci-theme-modemskin
 
 # IPK 固件
-opkg remove luci-theme-ctmodem-tricolor
+opkg remove luci-theme-modemskin
 ```
 
 卸载钩子包含其他已安装主题的回退处理，但建议先手动切换。请自行备份修改过的配置。
@@ -114,7 +114,7 @@ sh scripts/build-in-docker.sh "$PWD/../build/modemskin" both
 
 JS/CSS 使用锁定版本的 esbuild 压缩；APK、IPK 的打包环境固定 Docker 镜像摘要。IPK 使用固定提交并校验 SHA256 的 OpenWrt 官方 `ipkg-build`。构建依赖与中间文件不进入安装包。
 
-如需集成固件，可将 `luci-theme-ctmodem-tricolor/` 放入已配置 LuCI feed 的构建树。完整固件构建不属于当前已完成的验证范围。
+如需集成固件，可将 `luci-theme-modemskin/` 放入已配置 LuCI feed 的构建树。完整固件构建不属于当前已完成的验证范围。
 
 ## 验证范围
 
@@ -138,6 +138,17 @@ JS/CSS 使用锁定版本的 esbuild 压缩；APK、IPK 的打包环境固定 Do
 
 检查登录会话和主题写权限，必要时重新登录。保存接口只接受电信、联通、移动三种预设值；配置损坏时应先检查外观配置文件。
 
-**为什么包名仍包含 ctmodem-tricolor？**
 
-这是当前发行包沿用的技术标识，与 ModemSkin 的仓库名称不同。请以本 README 列出的包名和主题选项安装使用。
+## 从旧版三运营商主题迁移
+
+安装新的 `luci-theme-modemskin` 即可与旧包 `luci-theme-ctmodem-tricolor` 共存。首次安装会读取旧版已保存的外观到独立的 `/etc/config/modemskin`；如当前正在使用旧三运营商主题，会切换到新主题路径。旧版文件和配置不会被覆盖。
+
+确认 LuCI 当前主题为 **ModemSkin**、外观和功能正常后，再按固件包管理器卸载旧包：
+
+```sh
+apk del luci-theme-ctmodem-tricolor
+# 或
+opkg remove luci-theme-ctmodem-tricolor
+```
+
+不需要卸载独立电信版 CTModem_Ohbaby。新主题后续升级保留自己的外观配置，不再反复导入旧配置。

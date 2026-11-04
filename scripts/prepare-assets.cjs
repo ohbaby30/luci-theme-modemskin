@@ -7,7 +7,7 @@ const [out, tools] = process.argv.slice(2);
 if (!out || !tools) throw new Error('Usage: prepare-assets.cjs OUTPUT ESBUILD_MODULE');
 const esbuild = require(tools);
 const base = path.resolve(__dirname, '..');
-const source = path.join(base, 'luci-theme-ctmodem-tricolor/htdocs');
+const source = path.join(base, 'luci-theme-modemskin/htdocs');
 const report = [];
 function prepare(dir, dest) {
   fs.mkdirSync(dest, { recursive: true });
