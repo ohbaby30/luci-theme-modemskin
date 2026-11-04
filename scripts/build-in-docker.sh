@@ -37,4 +37,4 @@ if [ "$FORMAT" != apk ]; then
     "$DEBIAN" sh /source/scripts/build-ipk.sh /output /assets /tools/ipkg-build
 fi
 # One checksum manifest for every selected format.
-node -e 'const fs=require("fs"),p=require("path"),c=require("crypto"),d=process.argv[1];fs.writeFileSync(p.join(d,"SHA256SUMS"),fs.readdirSync(d).filter(n=>/\.(apk|ipk)$/.test(n)).sort().map(n=>c.createHash("sha256").update(fs.readFileSync(p.join(d,n))).digest("hex")+"  "+n+"\n").join(""))' "$OUT"
+node "$BASE/scripts/write-checksums.cjs" "$OUT"
