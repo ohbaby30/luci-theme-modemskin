@@ -8,7 +8,7 @@ ModemSkin 基于 [hakureiyuyuko/luci-theme-ctmodem](https://github.com/hakureiyu
 
 在此基础上，Ohbaby 扩展了联通与移动外观，并对导航兼容、外观保存、组件显示及打包流程进行了开发和修正。联通、移动外观参考公开设备界面，以本地 CSS、SVG 和原生 JavaScript 实现；参考文章截图未作为主题运行资源分发。
 
-本项目代码采用 [MIT License](LICENSE)，保留 `hakureiyuyuko` 与 `Ohbaby` 的贡献署名。继承范围、界面参考和第三方素材说明见 [NOTICE.md](NOTICE.md)。运营商品牌标识与设备素材的相关权利归各自权利人所有；代码许可证不构成品牌授权或运营商背书。
+Ohbaby 的新增与修改贡献采用 [MIT License](LICENSE)，根许可证署名 `Copyright (c) 2026 Ohbaby`。上游保留部分的原作者版权、完整 MIT 许可和涉及文件范围独立列于 [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)，并随安装包分发。来源与修改说明见 [NOTICE.md](NOTICE.md)。运营商品牌标识与设备素材的相关权利归各自权利人所有；代码许可证不构成品牌授权或运营商背书。
 
 ## 主要功能与改进
 
@@ -64,13 +64,13 @@ ModemSkin 基于 [hakureiyuyuko/luci-theme-ctmodem](https://github.com/hakureiyu
 ### APK 固件
 
 ```sh
-apk add --allow-untrusted /tmp/luci-theme-modemskin-1.1.0-r1.apk
+apk add --allow-untrusted /tmp/luci-theme-modemskin-1.1.0-r2.apk
 ```
 
 ### IPK 固件
 
 ```sh
-opkg install /tmp/luci-theme-modemskin_1.1.0-r1_all.ipk
+opkg install /tmp/luci-theme-modemskin_1.1.0-r2_all.ipk
 ```
 
 上述文件名对应当前版本；后续版本请替换为实际下载文件名。安装后进入 **系统 → 系统 → 语言和界面**（部分版本称“语言和样式”），选择 **ModemSkin**，保存并应用。

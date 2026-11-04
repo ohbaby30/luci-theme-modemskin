@@ -1,6 +1,6 @@
 # 来源与修改
 
-本项目基于 [hakureiyuyuko/luci-theme-ctmodem](https://github.com/hakureiyuyuko/luci-theme-ctmodem)，基线提交 `e74b366701c97a10c1b2f94057f21c46cfadbf4f`。保留原 MIT 许可证及作者版权声明。
+本项目基于 [hakureiyuyuko/luci-theme-ctmodem](https://github.com/hakureiyuyuko/luci-theme-ctmodem)，基线提交 `e74b366701c97a10c1b2f94057f21c46cfadbf4f`。上游完整 MIT 许可证、版权声明与涉及文件范围保留在 [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)。
 
 CTModem Tricolor 的修改包括独立主题路径、LuCI 条件字段和状态指示器支持、递归导航、局部表单标签布局、动态进度数字、登录返回路径及 APK 构建流程。
 
@@ -19,3 +19,7 @@ Carrier login decoration SVGs are locally drawn for this theme. Layout reference
 ## 新增与修改部分的署名
 
 Copyright (c) 2026 Ohbaby。Ohbaby 的新增与修改部分按 MIT 许可证发布，包括三运营商外观切换、独立外观配置与保存接口、联通/移动样式、登录页装饰以及本项目的兼容性修改。该署名不替代上游版权声明，不主张取得上游代码或第三方品牌/素材的所有权；适用的上游及第三方声明继续保留。
+
+## 许可文件的范围
+
+根目录LICENSE仅署Copyright (c) 2026 Ohbaby，适用于Ohbaby的新增与修改贡献。上游保留部分的版权与完整MIT许可独立保存在THIRD_PARTY_LICENSES.md，并随APK/IPK分发。这种分开声明不改变上游保留部分的权利归属，也不把共用代码误归为只属于电信外观。
