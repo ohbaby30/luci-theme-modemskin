@@ -1,4 +1,4 @@
-/* ModemSkin · telecom; original r5 presentation. MIT. */
+/* ModemSkin · Telecom appearance. MIT. */
 html[data-ct-skin="telecom"] #gwhead { background: #fff url(img/framelogo.jpg) no-repeat left top; background-size: 100% 100%; }
 html[data-ct-skin="telecom"] #topmenu > li > a { background: var(--ont-orange) url(img/back_button.jpg) no-repeat center top; background-size:100% 17px; }
 html[data-ct-skin="telecom"] #topmenu > li.active > a { background: var(--ont-blue) url(img/selected_button.jpg) no-repeat center top; background-size:100% 17px; }

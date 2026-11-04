@@ -1,4 +1,4 @@
-/* Tricolor · China Mobile GS3101 teal configuration layout. MIT. */
+/* ModemSkin · Mobile appearance. MIT. */
 html[data-ct-skin="mobile"] { --ont-orange:#5cb6c9; --ont-orange-d:#378b9d; --ont-orange-l:#a1d7e1; --ont-blue:#333c43; --ont-blue-d:#273038; --ont-link:#267989; }
 html[data-ct-skin="mobile"] #page { box-shadow:none; background:#fafafa; }
 html[data-ct-skin="mobile"] #gwhead { background:#5cb6c9; height:68px; }

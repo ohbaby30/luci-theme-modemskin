@@ -71,6 +71,6 @@ sh scripts/build-in-docker.sh "$PWD/../build/modemskin" both
 
 ## 来源与许可
 
-电信风格及部分共用代码、素材源自 [hakureiyuyuko/luci-theme-ctmodem](https://github.com/hakureiyuyuko/luci-theme-ctmodem)。ModemSkin 在此基础上新增联通、移动外观，并完善导航兼容、组件适配和双格式构建。
+电信风格及部分代码、素材源自 [hakureiyuyuko/luci-theme-ctmodem](https://github.com/hakureiyuyuko/luci-theme-ctmodem)。ModemSkin 在此基础上新增联通、移动外观，并完善导航兼容、组件适配和双格式构建。
 
 代码采用 [MIT License](LICENSE)。来源与修改说明见 [NOTICE.md](NOTICE.md)，第三方版权及许可全文见 [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)。

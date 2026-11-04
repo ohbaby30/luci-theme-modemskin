@@ -1,4 +1,4 @@
-/* Tricolor · Unicom F657GV9 white configuration layout. MIT. */
+/* ModemSkin · Unicom appearance. MIT. */
 html[data-ct-skin="unicom"] { --ont-orange:#f18110; --ont-orange-d:#c36210; --ont-blue:#a85020; --ont-blue-d:#8f3b0e; --ont-link:#8d4814; }
 html[data-ct-skin="unicom"] #page { max-width:1180px; background:#fff; box-shadow:none; display:grid; grid-template-columns:250px minmax(0,1fr); grid-template-rows:auto 82px auto 52px minmax(500px,1fr) auto auto; }
 html[data-ct-skin="unicom"] #ct-appearance { grid-column:1/-1; grid-row:1; }
@@ -76,7 +76,7 @@ html[data-ct-skin="unicom"] #loginbox .login-error { position:static; color:#b11
  html[data-ct-skin="unicom"] .cbi-value-field { padding:5px 7px; }
 }
 
-/* F657GV9-style white welcome screen; the original LuCI POST form stays intact. */
+/* Unicom login presentation. */
 html[data-ct-skin="unicom"] #loginwrap { max-width:1000px; padding:45px 20px 55px; }
 html[data-ct-skin="unicom"] #loginbox { width:960px; min-height:540px; border:0; border-radius:0; box-sizing:border-box; overflow:visible; background:#fff url(login-network.svg) center/contain no-repeat; padding:90px 20px 40px; }
 html[data-ct-skin="unicom"] #loginbox .login-banner { position:absolute; top:24px; left:35px; padding:0; background:none; text-align:left; color:#222; font:700 23px Arial,"Songti SC",serif; }

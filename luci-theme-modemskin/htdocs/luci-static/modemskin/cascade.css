@@ -1,6 +1,5 @@
 /*!
  * luci-theme-modemskin - 光猫/家庭网关风格 LuCI 主题
- * 参照天翼网关 Web 管理界面的配色与版式重新绘制
  * 主色: #EF8218 (橙)  #427594 (蓝灰)  #E3E3E3 (浅灰)
  * License: MIT
  */
@@ -275,7 +274,7 @@ code, pre, kbd, samp {
 
 #topmenu > li > a:hover {
 	text-decoration: none;
-	color: #F0422A;      /* 原机：悬停只变红字，背景不变 */
+	color: #F0422A;      /* Hover color */
 }
 #topmenu > li.active > a {
 	background: var(--ont-blue);
@@ -333,7 +332,7 @@ code, pre, kbd, samp {
 	background: var(--ont-grey);
 	display: flex;
 	flex-direction: column;
-	padding-top: 12px;   /* 与上方橙色大标题块之间留出灰底间隙（原机样式） */
+	padding-top: 12px;   /* 与上方橙色大标题块之间留出灰底间隙 */
 }
 
 #lefttitle {
@@ -426,7 +425,7 @@ code, pre, kbd, samp {
 	position: relative;
 }
 
-/* 左侧 208px 橙色块，还原原机页脚 */
+/* Footer column */
 #gwfooter::before {
 	content: "";
 	flex: 0 0 208px;
@@ -457,7 +456,7 @@ code, pre, kbd, samp {
 #gwfooter #modemenu:empty { display: none; }
 #gwfooter #modemenu li.active a { font-weight: bold; color: #FFF; }
 
-/* 版权行：页脚色条下方，浅灰底居中（原机样式） */
+/* 版权行：页脚色条下方，浅灰底居中 */
 #gwcopy {
 	background: #D1D1D1;
 	border-top: 1px solid #C0C0C0;
@@ -924,7 +923,7 @@ div:has(> .ifacebox[style*="width: 100px"]) {
 }
 
 /* 条内数值：LuCI 只把「值 / 总值 (百分比)」放在 title 上，
- * menu-ctmodem.js 会把它插成 <span class="ont-progress-label">。
+ * menu-modemskin.js 会把它插成 <span class="ont-progress-label">。
  * 因为填充条本身未定位，span 的包含块是整条轨道，所以文字始终居中于轨道。 */
 .cbi-progressbar > div > span {
 	position: absolute;
@@ -1325,7 +1324,7 @@ body.modal-overlay-active #modal_overlay {
 	#maincontent { padding: 0; }
 }
 
-/* ---------- 登录页（尺寸取自原机 login.css：500x275 + 4px 蓝边） ---------- */
+/* ---------- Login layout ---------- */
 body:has(#loginwrap) {
 	background: #FFFFFF;
 	justify-content: flex-start;
@@ -1338,7 +1337,7 @@ body:has(#loginwrap) {
 	flex: 1 0 auto;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;   /* 整体垂直居中，接近原机离底部的距离 */
+	justify-content: center;   /* Vertically centered */
 	align-items: center;
 	padding: 40px 16px 120px;
 }
@@ -1367,7 +1366,7 @@ body:has(#loginwrap) {
 	font-size: 18px;
 	font-weight: bold;
 	color: #FFF;
-	padding: 14px 0 32px;   /* 标题与表单之间留空（原机约 40px） */
+	padding: 14px 0 32px;   /* Space between heading and form */
 	letter-spacing: 1px;
 }
 
@@ -1504,7 +1503,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #0b4fa8; outline-offs
 .cbi-dynlist > .add-item > input { min-width: 0; flex: 1 1 auto; }
 body.modal-overlay-active { overflow: hidden; }
 
-/* Tricolor controls never live in a plugin form or replace its DOM. */
+/* Appearance controls stay outside plugin forms. */
 .ct-wordmark,.ct-brand-unicom,.ct-brand-mobile,.ct-nav-icon { display:none; }
 #ct-appearance { position:sticky; top:0; z-index:950; display:flex; align-items:center; justify-content:flex-end; flex-wrap:wrap; gap:6px; padding:5px 10px; background:#f5f6f7; border-bottom:1px solid #ddd; min-height:36px; font:12px/1.5 Arial,"PingFang SC",sans-serif; color:#333; }
 #ct-appearance select,#ct-appearance button { font:inherit; color:#222; border:1px solid #aaa; border-radius:2px; background:#fff; height:26px; padding:2px 7px; width:auto; }

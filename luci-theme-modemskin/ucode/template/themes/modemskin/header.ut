@@ -1,6 +1,5 @@
 {#
  luci-theme-modemskin - 光猫/网关风格主题 header
- 参照天翼网关 Web 管理界面版式
  Licensed to the public under the MIT License.
 -#}
 {%

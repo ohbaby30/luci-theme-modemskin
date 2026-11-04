@@ -43,7 +43,7 @@
 	var form = document.getElementById('loginform');
 	var btn  = document.getElementById('loginbtn');
 
-	/* 与原版一致：不校验空值，直接回车即可提交（无密码设备可直接登录） */
+	/* Allow normal form submission, including devices without a password. */
 	form.addEventListener('submit', function () {
 		btn.disabled = true;
 		btn.textContent = {{ replace(sprintf('%J', _('Logging in…')), '/', '\\/') }};
