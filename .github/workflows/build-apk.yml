@@ -4,7 +4,11 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: modemskin-release
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -12,15 +16,29 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
+      - name: Check release version
+        id: version
+        run: |
+          version=$(sed -n 's/^PKG_VERSION:=//p' luci-theme-modemskin/Makefile)
+          revision=$(sed -n 's/^PKG_RELEASE:=//p' luci-theme-modemskin/Makefile)
+          [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          [[ "$revision" =~ ^[0-9]+$ ]]
+          tag="v${version}-r${revision}"
+          existing=$(git ls-remote --tags origin "refs/tags/$tag" "refs/tags/$tag^{}")
+          if [ -n "$existing" ]; then
+            echo "::error::Version $tag already exists. Increase PKG_VERSION or PKG_RELEASE before publishing."
+            exit 1
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
       - name: Set up build-only Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7.1.0
         with:
           node-version: '22'
       - name: Build APK and IPK from one payload
         run: sh scripts/build-in-docker.sh "$RUNNER_TEMP/modemskin-packages" both
       - name: Store APK, IPK and checksums
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: modemskin-apk-ipk
           path: |
@@ -31,3 +49,29 @@ jobs:
             ${{ runner.temp }}/modemskin-packages/ipk-control.txt
           if-no-files-found: error
           retention-days: 30
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ steps.version.outputs.tag }}
+          RELEASE_COMMIT: ${{ github.sha }}
+          PACKAGE_DIR: ${{ runner.temp }}/modemskin-packages
+        run: |
+          cd "$PACKAGE_DIR"
+          sha256sum --check SHA256SUMS
+          test -f "luci-theme-modemskin-${RELEASE_TAG#v}.apk"
+          test -f "luci-theme-modemskin_${RELEASE_TAG#v}_all.ipk"
+          cat > "$RUNNER_TEMP/release-notes.md" <<'EOF'
+          同一版本提供 APK、IPK 和 SHA256SUMS，请按固件的包管理器选择安装包。
+
+          安装与使用说明见仓库 README。
+          EOF
+          gh release create "$RELEASE_TAG" \
+            --target "$RELEASE_COMMIT" \
+            --title "ModemSkin $RELEASE_TAG" \
+            --notes-file "$RUNNER_TEMP/release-notes.md" \
+            --draft \
+            "luci-theme-modemskin-${RELEASE_TAG#v}.apk" \
+            "luci-theme-modemskin_${RELEASE_TAG#v}_all.ipk" \
+            SHA256SUMS
+          gh release edit "$RELEASE_TAG" --draft=false --latest
